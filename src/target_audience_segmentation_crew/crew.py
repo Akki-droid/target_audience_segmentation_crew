@@ -5,9 +5,7 @@ from crewai_tools import SerperDevTool
 from langchain.llms import OpenAI
 import os
 
-# Set environment variables
-#os.environ["SERPER_API_KEY"] = "cd15c425b992781c8651a142e33ca2a9b96ca85e7e582b3f0b87e14983ca46ba"
-#os.environ["OPENAI_API_KEY"] = "UYvKT8SQgeaXQcLMeJ9lLLlyTEjeijHUwKhncHYqrYs0ZWIw9VNj4pVGMA"
+
 
 
 @CrewBase
