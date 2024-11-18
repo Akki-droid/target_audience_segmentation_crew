@@ -1,0 +1,39 @@
+---
+analyze_business_and_products_task:
+  description: Analyze the provided business details {BUSINESS_DETAILS} and product
+    description {PRODUCT_DESCRIPTION} to identify key characteristics, industry
+    positioning, and unique selling points.'
+  expected_output: A detailed analysis report highlighting key characteristics of
+    the business and product, including industry insights and positioning.
+  async_execution: false
+  agent: analysis_expert
+identify_primary_segments_task:
+  description: Based on the analysis report, identify potential primary audience segments
+    considering demographics, psychographics, and behavioral characteristics that
+    align with the business goals.
+  expected_output: A list of 3-5 primary audience segments with detailed characteristics
+    and reasons why each segment is a good fit for the business.
+  async_execution: false
+  agent: segmentation_specialist
+  context:
+  - analyze_business_and_products_task
+identify_secondary_segments_task:
+  description: Identify secondary audience segments that might influence decision-makers
+    or benefit indirectly from the product/service based on the insights gained from
+    the analysis.
+  expected_output: A list of 2-3 secondary audience segments with specific characteristics
+    and relevance to the business.
+  async_execution: false
+  agent: segmentation_specialist
+  context:
+  - analyze_business_and_products_task
+format_output_task:
+  description: Compile the identified primary and secondary audience segments into
+    a structured output format
+  expected_output: A formatted list of target audience segments, including primary
+    and secondary segments, ready for presentation to stakeholders.
+  async_execution: false
+  agent: output_formatter
+  context:
+  - identify_primary_segments_task
+  - identify_secondary_segments_task

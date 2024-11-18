@@ -1,0 +1,20 @@
+[project]
+name = "target_audience_segmentation_crew"
+version = "0.1.0"
+description = "target_audience_segmentation_crew using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.79.4,<1.0.0"
+]
+
+[project.scripts]
+target_audience_segmentation_crew = "target_audience_segmentation_crew.main:run"
+run_crew = "target_audience_segmentation_crew.main:run"
+train = "target_audience_segmentation_crew.main:train"
+replay = "target_audience_segmentation_crew.main:replay"
+test = "target_audience_segmentation_crew.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
