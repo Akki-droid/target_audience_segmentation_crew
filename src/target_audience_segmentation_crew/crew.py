@@ -1,11 +1,14 @@
-from crewai import Agent, Crew, Process, Task
+from crewai import Agent, Crew, Process, Task, LLM
 from crewai.project import CrewBase, agent, crew, task
 from crewai_tools import SerperDevTool
-
-from langchain.llms import OpenAI
 import os
+##from langchain_anthropic import ChatAnthropic
 
-
+##os.environ["ANTHROPIC_API_KEY"] = "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"
+os.environ["SERPER_API_KEY"] = "a4532baa46e572bab32d01afbdc8af2f085c664ef718407ffdb941d3028dfd5fcre"
+os.environ["ANTHROPIC_API_KEY"] = "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"
+##anthropic_api_key = os.environ["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"]
+##anthropic_llm= ChatAnthropic(temperature=0.3,model="Claude 3.5 Sonnet 2024-10-22")
 
 
 @CrewBase
@@ -16,21 +19,22 @@ class TargetAudienceSegmentationCrewCrew():
     def analysis_expert(self) -> Agent:
         return Agent(
             config=self.agents_config['analysis_expert'],
-            
+            llm=LLM(api_key=os.getenv("ANTHROPIC_API_KEY"),model="anthropic/claude-3-5-sonnet-20241022",)
         )
+
 
     @agent
     def segmentation_specialist(self) -> Agent:
         return Agent(
             config=self.agents_config['segmentation_specialist'],
-            
+            llm=LLM(api_key=os.getenv("ANTHROPIC_API_KEY"), model="anthropic/claude-3-5-sonnet-20241022", )
         )
 
     @agent
     def output_formatter(self) -> Agent:
         return Agent(
             config=self.agents_config['output_formatter'],
-            
+            llm=LLM(api_key=os.getenv("ANTHROPIC_API_KEY"), model="anthropic/claude-3-5-sonnet-20241022", )
         )
 
 
